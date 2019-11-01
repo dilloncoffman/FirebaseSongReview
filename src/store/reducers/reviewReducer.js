@@ -32,11 +32,13 @@ const reviewReducer = (state = initState, action) => {
   switch (action.type) {
     case "CREATE_SONG_REVIEW":
       console.log("Created song review", action.review);
-      break;
+      return state;
+    case "CREATE_SONG_REVIEW_ERROR":
+      console.log("Create review error", action.err);
+      return state;
     default:
-      console.log("Hit default case");
+      return state;
   }
-  return state;
 };
 
 export default reviewReducer;
