@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createSongReview } from "../store/actions/reviewActions";
 
 class CreateSongReview extends Component {
   state = {
@@ -16,7 +18,7 @@ class CreateSongReview extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.createSongReview(this.state);
   };
 
   render() {
@@ -59,4 +61,13 @@ class CreateSongReview extends Component {
   }
 }
 
-export default CreateSongReview;
+const mapDispatchToProps = dispatch => {
+  return {
+    createSongReview: review => dispatch(createSongReview(review))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateSongReview);

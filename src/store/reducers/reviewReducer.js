@@ -28,6 +28,14 @@ const initState = {
 };
 
 const reviewReducer = (state = initState, action) => {
+  // check action type
+  switch (action.type) {
+    case "CREATE_SONG_REVIEW":
+      console.log("Created song review", action.review);
+      break;
+    default:
+      console.log("Hit default case");
+  }
   return state;
 };
 
