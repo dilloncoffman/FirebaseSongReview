@@ -7,14 +7,14 @@ import { connect } from "react-redux";
 const Navbar = props => {
   const { auth } = props;
   console.log(auth);
+  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (
     <nav className="nav-wrapper indigo lighten-1">
       <div className="container">
         <Link to="/" className="brand-logo">
           Song Review
         </Link>
-        <SignedInLinks />
-        <SignedOutLinks />
+        {links}
       </div>
     </nav>
   );
