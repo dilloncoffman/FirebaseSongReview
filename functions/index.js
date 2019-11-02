@@ -31,3 +31,20 @@ exports.reviewCreated = functions.firestore
 
     return createNowReviewingNotification(nowReviewingNotification);
   });
+
+exports.userJoined = functions.auth.user().onCreate(user => {
+  return admin
+    .firestore()
+    .collection("users")
+    .doc(user.uid)
+    .get()
+    .then(doc => {
+      const newUser = doc.data();
+      const notif = {
+        content: "Started reviewing",
+        user: `${newUser.userName}`,
+        time: admin.firestore.FieldValue.serverTimestamp()
+      };
+      return createNowReviewingNotification(notif);
+    });
+});
