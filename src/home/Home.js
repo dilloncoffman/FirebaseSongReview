@@ -4,10 +4,14 @@ import SongReviewList from "../song-reviews/SongReviewList";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
   render() {
-    const { reviews } = this.props;
+    const { reviews, auth } = this.props;
+
+    if (!auth.uid) return <Redirect to="/sign-in" />;
+
     return (
       <div className="dashboard container">
         <div className="row">
@@ -26,7 +30,8 @@ class Home extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    reviews: state.firestore.ordered.reviews
+    reviews: state.firestore.ordered.reviews,
+    auth: state.firebase.auth
   };
 };
 

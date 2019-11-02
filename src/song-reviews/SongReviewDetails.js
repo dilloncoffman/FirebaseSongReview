@@ -2,9 +2,13 @@ import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
 
 const SongReviewDetails = props => {
-  const { review } = props;
+  const { review, auth } = props;
+
+  if (!auth.uid) return <Redirect to="/sign-in" />;
+
   if (review) {
     return (
       <div className="container section song-review-details">
@@ -34,7 +38,8 @@ const mapStateToProps = (state, ownProps) => {
   const reviews = state.firestore.data.reviews;
   const review = reviews ? reviews[id] : null;
   return {
-    review: review
+    review: review,
+    auth: state.firebase.auth
   };
 };
 
