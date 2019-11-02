@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import NowReviewing from "./NowReviewing";
 import SongReviewList from "../song-reviews/SongReviewList";
+import { compose } from "redux";
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
 
 class Home extends Component {
   render() {
@@ -22,9 +24,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    reviews: state.review.reviews
+    reviews: state.firestore.ordered.reviews
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "reviews" }]) // listen to reviews collection
+)(Home);
