@@ -12,7 +12,9 @@ const NowReviewing = props => {
             {notifs &&
               notifs.map(notif => (
                 <li key={notif.id}>
-                  <span className="light-blue lighten-4">{notif.user} </span>
+                  <span className="light-blue-text text-lighten-2">
+                    {notif.user}{" "}
+                  </span>
                   <span>{notif.content}</span>
                   <div className="grey-text note-date">
                     {moment(notif.time.toDate()).fromNow()}
