@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const SongReviewExcerpt = ({ review }) => {
   return (
@@ -6,7 +7,9 @@ const SongReviewExcerpt = ({ review }) => {
       <div className="card-content grey-text text-darken-3">
         <span className="card-title">{review.songName}</span>
         <p>Reviewed by {review.authorUser}</p>
-        <p className="grey-text">Nov. 1st, 2019</p>
+        <p className="grey-text">
+          {moment(review.createdAt.toDate()).calendar()}
+        </p>
       </div>
     </div>
   );

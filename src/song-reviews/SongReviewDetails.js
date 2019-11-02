@@ -3,6 +3,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
+import moment from "moment";
 
 const SongReviewDetails = props => {
   const { review, auth } = props;
@@ -18,7 +19,7 @@ const SongReviewDetails = props => {
             <p>{review.reviewContent}</p>
             <div className="card-action grey lighten-4 grey-text">
               <div>Reviewed by {review.authorUser}</div>
-              <div>Nov. 1st, 2019</div>
+              <div>{moment(review.createdAt.toDate()).calendar()}</div>
             </div>
           </div>
         </div>
