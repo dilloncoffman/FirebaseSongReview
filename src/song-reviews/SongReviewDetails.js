@@ -5,9 +5,11 @@ import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
 import YouTube from "react-youtube-embed";
+import getYouTubeID from "get-youtube-id";
 
 const SongReviewDetails = props => {
   const { review, auth } = props;
+  const videoForReview = getYouTubeID(review.youtubeLinkToSong);
 
   if (!auth.uid) return <Redirect to="/sign-in" />;
 
@@ -17,7 +19,7 @@ const SongReviewDetails = props => {
         <div className="card z-depth-0">
           <div className="card-contet">
             <span className="card-title">{review.songName}</span>
-            <YouTube id={review.videoID} />
+            <YouTube id={videoForReview} />
             <p>{review.reviewContent}</p>
             <div className="card-action grey lighten-4 grey-text">
               <div>Reviewed by {review.authorUser}</div>

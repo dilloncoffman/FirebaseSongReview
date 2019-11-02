@@ -27,8 +27,6 @@ exports.reviewCreated = functions.firestore
       time: admin.firestore.FieldValue.serverTimestamp()
     };
 
-    // use youtubeLinkToSong property on review to get video id and update the firestore document for that review to hold that video ID
-
     return createNowReviewingNotification(nowReviewingNotification);
   });
 
