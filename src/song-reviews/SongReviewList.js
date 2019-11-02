@@ -9,7 +9,7 @@ const SongReviewList = ({ reviews }) => {
         reviews.map(review => {
           return (
             <Link key={review.id} to={"/song-review/" + review.id}>
-              <SongReviewExcerpt review={review} key={review.id} />;
+              <SongReviewExcerpt review={review} />;
             </Link>
           );
         })}
