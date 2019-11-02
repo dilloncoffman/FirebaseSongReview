@@ -6,6 +6,9 @@ const SongReviewExcerpt = ({ review }) => {
     <div className="card z-depth-0 song-review-summary">
       <div className="card-content grey-text text-darken-3">
         <span className="card-title">{review.songName}</span>
+        <span className="light-blue-text text-lighten-2">
+          {review.artistName}
+        </span>
         <p>Reviewed by {review.authorUser}</p>
         <p className="grey-text">
           {moment(review.createdAt.toDate()).calendar()}

@@ -11,6 +11,7 @@
     "react-redux-firebase": "^2.1.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-youtube-embed": "^1.0.3",
     "redux": "^4.0.4",
     "redux-firestore": "^0.9.0",
     "redux-thunk": "^2.3.0"
