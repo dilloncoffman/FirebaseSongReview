@@ -2,15 +2,15 @@ import React from "react";
 import moment from "moment";
 
 const NowReviewing = props => {
-  const { notifs } = props;
+  const { notifications } = props;
   return (
     <div className="section">
       <div className="card z-depth-0">
         <div className="card-content">
-          <span className="card-title">Now Reviewing</span>
+          <span className="card-title">Notifications</span>
           <ul className="now-reviewing">
-            {notifs &&
-              notifs.map(notif => (
+            {notifications &&
+              notifications.map(notif => (
                 <li key={notif.id}>
                   <span className="light-blue-text text-lighten-2">
                     {notif.user}{" "}

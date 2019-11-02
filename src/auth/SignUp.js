@@ -5,7 +5,7 @@ import { signUp } from "../store/actions/authActions";
 
 class SignUp extends Component {
   state = {
-    userName: "",
+    username: "",
     email: "",
     password: ""
   };

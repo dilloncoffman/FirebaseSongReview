@@ -8,12 +8,13 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
 
-const createNowReviewingNotification = notif => {
-  return admin.firestore
+const createNowReviewingNotification = notification => {
+  return admin
+    .firestore()
     .collection("notifications")
-    .add(notif)
+    .add(notification)
     .then(doc => {
-      console.log("Now Reviewing notification added!");
+      console.log("Now Reviewing notification added!", doc);
     });
 };
 
@@ -38,11 +39,11 @@ exports.userJoined = functions.auth.user().onCreate(user => {
     .get()
     .then(doc => {
       const newUser = doc.data();
-      const notif = {
+      const notification = {
         content: "Started reviewing",
-        user: `${newUser.userName}`,
+        user: `${newUser.username}`,
         time: admin.firestore.FieldValue.serverTimestamp()
       };
-      return createNowReviewingNotification(notif);
+      return createNowReviewingNotification(notification);
     });
 });
