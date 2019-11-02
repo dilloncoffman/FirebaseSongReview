@@ -42,7 +42,6 @@ const SongReviewDetails = props => {
           <div className="card-content">
             <span className="card-title">{review.songName}</span>
             <YouTube id={videoForReview} />
-            <h3>English</h3>
             <p>{review.reviewContent}</p>
             {deTranslation}
             {esTranslation}
