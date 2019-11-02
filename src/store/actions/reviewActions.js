@@ -1,5 +1,5 @@
 export const createSongReview = review => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return (dispatch, getState, { getFirestore }) => {
     // make async call to db
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -9,7 +9,7 @@ export const createSongReview = review => {
       .collection("reviews")
       .add({
         ...review,
-        authorUser: profile.userName,
+        authorUser: profile.username,
         authorID: userID,
         videoID: "youtubeVideoIDFromCloudFunction",
         createdAt: new Date()
