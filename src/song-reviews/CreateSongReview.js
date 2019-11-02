@@ -20,6 +20,7 @@ class CreateSongReview extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createSongReview(this.state);
+    this.props.history.push("/");
   };
 
   render() {
