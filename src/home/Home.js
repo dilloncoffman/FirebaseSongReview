@@ -28,7 +28,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     reviews: state.firestore.ordered.reviews,
     auth: state.firebase.auth

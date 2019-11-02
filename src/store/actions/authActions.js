@@ -37,12 +37,13 @@ export const signUp = newUser => {
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then(res => {
         // create record in firestore for signed up user
+        console.log(res);
         return firestore
           .collection("users")
           .doc(res.user.uid)
           .set({
-            username: newUser.username,
-            initial: newUser.username[0]
+            username: newUser.userName,
+            initial: newUser.userName[0]
           });
       })
       .then(() => {
@@ -50,6 +51,7 @@ export const signUp = newUser => {
         dispatch({ type: "SIGN_UP_SUCCESS" });
       })
       .catch(err => {
+        console.log(err);
         dispatch({ type: "SIGN_UP_ERROR", err });
       });
   };
